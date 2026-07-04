@@ -1,7 +1,6 @@
 import pdfplumber
 import os
 import json
-from extract import extract_syllabus, extract_text_from_pdf
 from groq import Groq
 from dotenv import load_dotenv
 
