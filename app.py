@@ -1,6 +1,6 @@
 import streamlit as st
 import json, os, tempfile
-from extract import extract_syllabus, extact_text_from_pdf
+from extract import extract_syllabus, extract_text_from_pdf
 from planner import allocate_hours, generate_weekly_plan, clean_json_response
 from pdf_export import generate_pdf, load_timetable
 from remainder import send_daily_nudge
@@ -26,7 +26,7 @@ if st.button("🚀 Generate Plan"):
             tmp.write(uploaded_file.read())
             tmp_path = tmp.name
 
-        raw_text = extact_text_from_pdf(tmp_path)
+        raw_text = extract_text_from_pdf(tmp_path)
         raw_syllabus = extract_syllabus(raw_text)
 
         cleaned =  raw_syllabus.strip()
