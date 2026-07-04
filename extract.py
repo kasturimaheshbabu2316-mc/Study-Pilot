@@ -1,11 +1,11 @@
 import pdfplumber
 import os
 import json
+from extract import extract_syllabus, extract_text_from_pdf
 from groq import Groq
 from dotenv import load_dotenv
 
-
-def extact_text_from_pdf(pdf_path):
+def extract_text_from_pdf(pdf_path):
     text = ""
     with pdfplumber.open(pdf_path) as pdf:
         for page in pdf.pages:
@@ -66,7 +66,7 @@ def clean_json_response(raw):
     return raw[start : end + 1]
 
 def main():
-    text = extact_text_from_pdf("sample_syllabus_for_studypilot.pdf")
+    text = extract_text_from_pdf("sample_syllabus_for_studypilot.pdf")
     ## send this text to the AI model
     raw_output = extract_syllabus(text)
     cleaned = clean_json_response(raw_output)
